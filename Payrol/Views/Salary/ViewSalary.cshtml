@@ -1,0 +1,92 @@
+﻿@model Payrol.Models.Salary
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="text-primary">VIEW SALARY</h1>
+        </div>
+    </div>
+    <br /><br />
+
+        <table class="table">
+            <tr>
+                <th>NAME</th>
+                <td>:</td>
+                <td>
+                    @Html.DisplayFor(x => x.Staff.StaffName)
+                </td>
+            </tr>
+            <tr>
+                <th>AGE</th>
+                <td>:</td>
+                <td>
+                    @Html.DisplayFor(x => x.Staff.StaffAge)
+                </td>
+            </tr>
+            <tr>
+                <th>DEPARTMENT</th>
+                <td>:</td>
+                <td>
+                    @Html.DisplayFor(x => x.Staff.Department.DepartmentName)
+                </td>
+            </tr>
+            <tr>
+                <th>BASIC</th>
+                <td>:</td>
+                <td>
+                    @Html.DisplayFor(x => x.SalaryBasic)
+                </td>
+            </tr>
+            <tr>
+                <th>TRANSPORT ALLOWANCE</th>
+                <td>:</td>
+                <td>
+                    @Html.DisplayFor(x => x.SalaryTransportAllowance)
+                </td>
+                <td>
+            </tr>
+            <tr>
+                <th>PERFORMANCE ALLOWANCE</th>
+                <td>:</td>
+                <td>
+                    @Html.DisplayFor(x => x.SalaryPerformanceAllowance)
+                </td>
+            </tr>
+            <tr>
+                <th>OVERTIME</th>
+                <td>:</td>
+                <td>
+                    @Html.DisplayFor(x => x.SalaryOvertime)
+                </td>
+            </tr>
+            <tr>
+                <th>KWSP</th>
+                <td>:</td>
+                <td>
+                    @Html.DisplayFor(x => x.SalaryKwsp)
+                </td>
+            </tr>
+            <tr>
+                <th>TOTAL SALARY</th>
+                <td>:</td>
+                <td>@ViewBag.Total</td>
+            </tr>
+            <tr>
+                <td class="center">
+                    <a asp-controller="Salary" asp-route-Id="@Model.SalaryId" asp-action="Edit" class="btn btn-primary">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a asp-controller="Salary" asp-route-Id="@Model.SalaryId" asp-action="Delete" class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                    <a asp-action="Index" class="btn btn-success">
+                        <i class="fas fa-step-backward"></i>
+                    </a>
+                    
+                </td>
+            </tr>
+</table>
+
+
+</div>
+

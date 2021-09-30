@@ -1,0 +1,64 @@
+﻿@model Payrol.Models.Staff
+
+    <form method="post" asp-action="Edit">
+        <input asp-for="StaffId" type="hidden" />
+        <div class="border p-3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <h2 class="text-primary">
+                    EDIT STAFF
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="StaffName"></label>
+                        </div>
+                        <div class="col-4">
+                            <input asp-for="StaffName" class="form-control" />
+                            <span asp-validation-for="StaffName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="StaffAge"></label>
+                        </div>
+                        <div class="col-8">
+                            <input asp-for="StaffAge" class="form-control" />
+                            <span asp-validation-for="StaffAge" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="StaffDepartmentId">Department</label>
+                        </div>
+                        <div class="col-8">
+                            <select class="form-control" asp-for="StaffDepartmentId" asp-items="@(new SelectList(ViewBag.message,"DepartmentId","DepartmentName"))">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-8 offset-2 row">
+                            <button type="submit" class="btn btn-success" value="Update">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            &nbsp;
+                            <a asp-action="Index" class="btn btn-primary">
+                                <i class="fas fa-step-backward"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    @section Scripts
+    {
+        @{
+            <partial name="_ValidationScriptsPartial" />
+        }
+    }
+
