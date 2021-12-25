@@ -36,23 +36,23 @@
 
             </thead>
             <tbody>
-                @foreach (var obj in Model)
+                @foreach (var DataStaff in Model)
                 {
                     <tr>
                         <td>
-                            @obj.StaffName
+                            @DataStaff.StaffName
                         </td>
                         <td>
-                            @obj.StaffAge
+                            @DataStaff.StaffAge
                         </td>
                         <td>
-                            @obj.Department.DepartmentName
+                            @DataStaff.Department.DepartmentName
                         </td>
                         <td class="center">
-                            <a asp-controller="Staff" asp-route-Id="@obj.StaffId" asp-action="Edit" class="btn btn-primary">
+                            <a asp-controller="Staff" asp-route-Id="@DataStaff.StaffId" asp-action="Edit" class="btn btn-primary">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a asp-controller="Staff" asp-route-Id="@obj.StaffId" asp-action="Delete" class="btn btn-danger">
+                            <a asp-controller="Staff" asp-route-Id="@DataStaff.StaffId" asp-action="Delete" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>

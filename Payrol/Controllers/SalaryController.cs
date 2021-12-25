@@ -20,17 +20,17 @@ namespace Payrol.Controllers
         
         private readonly ApplicationDbContext _db;
 
-        public SalaryController(ApplicationDbContext db)
+        public SalaryController(ApplicationDbContext ObjectDb)
         {
-            _db = db;
+            _db = ObjectDb;
         }
         public IActionResult Index()
         {
             IEnumerable<Salary> salary =  _db.Salary;
 
-            var salaryViewModel = _db.Salary.Include(x=> x.Staff).Include(x => x.Staff.Department).ToList();
+            var SalaryViewModel = _db.Salary.Include(x=> x.Staff).Include(x => x.Staff.Department).ToList();
 
-            return View(salaryViewModel);
+            return View(SalaryViewModel);
         }
 
 
@@ -39,11 +39,11 @@ namespace Payrol.Controllers
 
             IEnumerable<Salary> objlist = _db.Salary;
 
-            var salaryViewModel = _db.Salary.Where(x => x.SalaryId == SalaryId).Include(x => x.Staff).Include(x => x.Staff.Department).FirstOrDefault(x => x.SalaryStaffId == SalaryStaffId);
+            var SalaryViewModel = _db.Salary.Where(x => x.SalaryId == SalaryId).Include(x => x.Staff).Include(x => x.Staff.Department).FirstOrDefault(x => x.SalaryStaffId == SalaryStaffId);
             
-            ViewBag.Total = _db.Salary.Where(x => x.SalaryId == SalaryId).Sum(x => x.SalaryBasic + x.SalaryTransportAllowance + x.SalaryPerformanceAllowance + x.SalaryOvertime + x.SalaryKwsp);
+            ViewData["TotalSalary"] = _db.Salary.Where(x => x.SalaryId == SalaryId).Sum(x => x.SalaryBasic + x.SalaryTransportAllowance + x.SalaryPerformanceAllowance + x.SalaryOvertime + x.SalaryKwsp);
 
-            return View(salaryViewModel);
+            return View(SalaryViewModel);
         }
 
 
@@ -55,7 +55,7 @@ namespace Payrol.Controllers
             staffs = _db.Staff.ToList(); ;
             staffs.Insert(0, new Staff { StaffId = 0, StaffName = "--Select Staff Name--" });
 
-            ViewBag.message = staffs;
+            ViewData["staffs"] = staffs;
 
             return View();
         }
@@ -87,13 +87,13 @@ namespace Payrol.Controllers
                 return NotFound();
             }
 
-            var obj = _db.Salary.Find(id);
-            if (obj == null)
+            var SalaryId = _db.Salary.Find(id);
+            if (SalaryId == null)
             {
                 return NotFound();
             }
 
-            return View(obj);
+            return View(SalaryId);
         }
 
         //post - EDIT
@@ -123,24 +123,24 @@ namespace Payrol.Controllers
                 return NotFound();
             }
 
-            var obj = _db.Salary.Find(id);
-            if (obj == null)
+            var SalaryId = _db.Salary.Find(id);
+            if (SalaryId == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            return View(SalaryId);
         }
 
         //POST-DELETE
         public IActionResult DeletePost(int? id)
         {
-            var obj = _db.Salary.Find(id);
-            if (obj == null)
+            var SalaryId = _db.Salary.Find(id);
+            if (SalaryId == null)
             {
                 return NotFound();
             }
 
-            _db.Salary.Remove(obj);
+            _db.Salary.Remove(SalaryId);
             _db.SaveChanges();
             return RedirectToAction("Index");
 

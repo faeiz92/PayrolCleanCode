@@ -35,7 +35,7 @@
                             <label asp-for="StaffDepartmentId">Department</label>
                         </div>
                         <div class="col-8">
-                            <select class="form-control" asp-for="StaffDepartmentId" asp-items="@(new SelectList(ViewBag.message,"DepartmentId","DepartmentName"))">
+                            <select class="form-control" asp-for="StaffDepartmentId" asp-items="@(new SelectList((IEnumerable<Department>) ViewData["departments"],"DepartmentId","DepartmentName"))">
                             </select>
                         </div>
                     </div>

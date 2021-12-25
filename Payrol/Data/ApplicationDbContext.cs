@@ -45,13 +45,6 @@ namespace Payrol.Data
                .HasForeignKey(x => x.SalaryStaffId)
                .OnDelete(DeleteBehavior.Cascade);
 
-            //builder.Entity<Salary>()
-            //.HasOptional(x => x.)
-            //.WithRequired(d => d.ApplicationUser);
-            //base.OnModelCreating(builder);
-
-
-
         }
     }
 

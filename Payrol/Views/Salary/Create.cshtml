@@ -17,7 +17,7 @@
                         </div>
                         <div>:</div>
                         <div class="col-6">
-                            <select class="form-control" asp-for="SalaryStaffId" asp-items="@(new SelectList(ViewBag.message,"StaffId","StaffName"))">
+                            <select class="form-control" asp-for="SalaryStaffId" asp-items="@(new SelectList((IEnumerable<Staff>) ViewData["staffs"],"StaffId","StaffName"))">
                             </select>
                         </div>
                     </div>

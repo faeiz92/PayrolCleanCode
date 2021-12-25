@@ -32,21 +32,21 @@
 
         </thead>
         <tbody>
-            @foreach(var obj in Model)
+            @foreach(var DataDepartment in Model)
             {
             <tr>
                 <td>
-                    @obj.DepartmentName
+                    @DataDepartment.DepartmentName
                 </td>
 
                 <td>
-                    @obj.DepartmentLocation
+                    @DataDepartment.DepartmentLocation
                 </td>
                 <td class="center">
-                    <a asp-controller="Department" asp-route-Id="@obj.DepartmentId" asp-action="Edit" class="btn btn-primary">
+                    <a asp-controller="Department" asp-route-Id="@DataDepartment.DepartmentId" asp-action="Edit" class="btn btn-primary">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a asp-controller="Department" asp-route-Id="@obj.DepartmentId" asp-action="Delete" class="btn btn-danger">
+                    <a asp-controller="Department" asp-route-Id="@DataDepartment.DepartmentId" asp-action="Delete" class="btn btn-danger">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </td>

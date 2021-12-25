@@ -18,14 +18,14 @@ namespace Payrol.Controllers
     {
         private readonly ApplicationDbContext _db;
 
-        public StaffController(ApplicationDbContext db)
+        public StaffController(ApplicationDbContext ObjectDb)
         {
-            _db = db;
+            _db = ObjectDb;
         }
         public IActionResult Index()
         {
 
-            IEnumerable<Staff> objlist = _db.Staff;
+            IEnumerable<Staff> staff = _db.Staff;
 
             var SalaryViewModel = _db.Staff.Include(x => x.Department).ToList();
 
@@ -43,7 +43,7 @@ namespace Payrol.Controllers
             departments = _db.Department.ToList();
             departments.Insert(0, new Department { DepartmentId = 0, DepartmentName = "--Select Department Name--" });
 
-            ViewBag.message = departments;
+            ViewData["departments"] = departments;
 
             return View();
         }
@@ -76,8 +76,8 @@ namespace Payrol.Controllers
                 return NotFound();
             }
 
-            var obj = _db.Staff.Find(id);
-            if (obj == null)
+            var DataStaff = _db.Staff.Find(id);
+            if (DataStaff == null)
             {
                 return NotFound();
             }
@@ -86,26 +86,26 @@ namespace Payrol.Controllers
             departments = _db.Department.ToList();
             departments.Insert(0, new Department { DepartmentId = 0, DepartmentName = "--Select Department Name--" });
 
-            ViewBag.message = departments;
+            ViewData["departments"] = departments;
 
-            return View(obj);
+            return View(DataStaff);
         }
 
         //post - EDIT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Staff staff)
+        public IActionResult Edit(Staff ObjectStaff)
         {
             if (ModelState.IsValid)
             {
-                _db.Staff.Update(staff);
+                _db.Staff.Update(ObjectStaff);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             else
             {
-                return View(staff);
+                return View(ObjectStaff);
             }
 
         }
@@ -118,8 +118,8 @@ namespace Payrol.Controllers
                 return NotFound();
             }
 
-            var FindStaffId = _db.Staff.Find(id);
-            if (FindStaffId == null)
+            var StaffId = _db.Staff.Find(id);
+            if (StaffId == null)
             {
                 return NotFound();
             }
@@ -127,21 +127,21 @@ namespace Payrol.Controllers
             departments = _db.Department.ToList();
             departments.Insert(0, new Department {DepartmentId = 0, DepartmentName = "--Select Department Name--" });
 
-            ViewBag.message = departments;
+            ViewData["departments"] = departments;
 
-            return View(FindStaffId);
+            return View(StaffId);
         }
 
         //POST-DELETE
         public IActionResult DeletePost(int? id)
         {
-            var FindStaffId = _db.Staff.Find(id);
-            if (FindStaffId == null)
+            var StaffId = _db.Staff.Find(id);
+            if (StaffId == null)
             {
                 return NotFound();
             }
 
-            _db.Staff.Remove(FindStaffId);
+            _db.Staff.Remove(StaffId);
             _db.SaveChanges();
             return RedirectToAction("Index");
 

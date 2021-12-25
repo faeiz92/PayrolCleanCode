@@ -35,20 +35,20 @@
 
             </thead>
             <tbody>
-                @foreach (var obj in Model)
+                @foreach (var DataSalary in Model)
                 {
                 <tr>
                     <td>
-                        @obj.Staff.StaffName
+                        @DataSalary.Staff.StaffName
                     </td>
                     <td>
-                        @obj.Staff.StaffAge
+                        @DataSalary.Staff.StaffAge
                     </td>
                     <td>
-                        @obj.Staff.Department.DepartmentName
+                        @DataSalary.Staff.Department.DepartmentName
                     </td>
                     <td class="center">
-                        @Html.ActionLink("Details", "ViewSalary", new { SalaryStaffId = obj.SalaryStaffId, SalaryId = obj.SalaryId})
+                        @Html.ActionLink("Details", "ViewSalary", new { SalaryStaffId = DataSalary.SalaryStaffId, SalaryId = DataSalary.SalaryId})
 
                     </td>
                 </tr>

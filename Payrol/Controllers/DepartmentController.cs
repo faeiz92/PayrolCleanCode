@@ -12,9 +12,9 @@ namespace Payrol.Controllers
     {
 
         private readonly ApplicationDbContext _db;
-        public DepartmentController(ApplicationDbContext db)
+        public DepartmentController(ApplicationDbContext ObjectDb)
         {
-            _db = db;
+            _db = ObjectDb;
         }
         public IActionResult Index()
         {
@@ -32,18 +32,18 @@ namespace Payrol.Controllers
         //post - CREATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Department obj)
+        public IActionResult Create(Department department)
         {
             if(ModelState.IsValid)
             {
-                _db.Department.Add(obj);
+                _db.Department.Add(department);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             else
             {
-                return View(obj);
+                return View(department);
             }
             
         }
@@ -56,30 +56,30 @@ namespace Payrol.Controllers
                 return NotFound();
             }
 
-            var obj = _db.Department.Find(id);
-            if(obj == null)
+            var DepartmentId = _db.Department.Find(id);
+            if(DepartmentId == null)
             {
                 return NotFound();
             }
 
-            return View(obj);
+            return View(DepartmentId);
         }
 
         //[HttpPost]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Department obj)
+        public IActionResult Edit(Department department)
         {
             if (ModelState.IsValid)
             {
-                _db.Department.Update(obj);
+                _db.Department.Update(department);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             else
             {
-                return View(obj);
+                return View(department);
             }
 
         }
@@ -91,25 +91,25 @@ namespace Payrol.Controllers
                 return NotFound();
             }
 
-            var obj = _db.Department.Find(id);
-            if (obj == null)
+            var DepartmentId = _db.Department.Find(id);
+            if (DepartmentId == null)
             {
                 return NotFound();
             }
 
-            return View(obj);
+            return View(DepartmentId);
         }
 
         //POST-DELETE
         public IActionResult DeletePost(int? id)
         {
-            var obj = _db.Department.Find(id);
-            if (obj == null)
+            var DepartmentId = _db.Department.Find(id);
+            if (DepartmentId == null)
             {
                 return NotFound();
             }
 
-            _db.Department.Remove(obj);
+            _db.Department.Remove(DepartmentId);
             _db.SaveChanges();
             return RedirectToAction("Index");
 
