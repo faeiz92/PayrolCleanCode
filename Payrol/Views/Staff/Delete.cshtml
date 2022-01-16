@@ -1,0 +1,66 @@
+﻿@model Payrol.Models.Staff
+
+    <form method="post" asp-action="DeletePost">
+        <input asp-for="StaffId" type="hidden" />
+        <div class="border p-3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <h2 class="text-primary">
+                    DELETE STAFF
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="StaffName"></label>
+                        </div>
+                        <div class="col-4">
+                            <input asp-for="StaffName" disabled class="form-control" />
+                            <span asp-validation-for="StaffName"  class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="StaffAge"></label>
+                        </div>
+                        <div class="col-8">
+                            <input asp-for="StaffAge" disabled class="form-control" />
+                            <span asp-validation-for="StaffAge" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="StaffDepartmentId">Department</label>
+                        </div>
+                        <div class="col-8">
+                            <select disabled class="form-control" asp-for="StaffDepartmentId" asp-items="@(new SelectList((IEnumerable<Department>) ViewData["departments"],"DepartmentId","DepartmentName"))">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-8 offset-2 row">
+                                <a asp-controller="Staff" asp-route-Id="@Model.StaffId" asp-action="DeletePost" class="btn btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                                &nbsp;                        
+                                <a asp-action="Index" class="btn btn-success">
+                                    <i class="fas fa-step-backward"></i>
+                                </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+    @section Scripts
+    {
+        @{
+            <partial name="_ValidationScriptsPartial" />
+        }
+    }
+

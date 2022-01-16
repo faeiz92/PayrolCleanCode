@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payrol", "Payrol\Payrol.csproj", "{CD796EFE-BF88-4161-83C8-62393D5C93DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportRDLC", "ReportRDLC\ReportRDLC.csproj", "{EF9F3DA4-4A41-4F24-8CB9-50D6F5CBC9EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD796EFE-BF88-4161-83C8-62393D5C93DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD796EFE-BF88-4161-83C8-62393D5C93DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD796EFE-BF88-4161-83C8-62393D5C93DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD796EFE-BF88-4161-83C8-62393D5C93DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF9F3DA4-4A41-4F24-8CB9-50D6F5CBC9EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF9F3DA4-4A41-4F24-8CB9-50D6F5CBC9EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF9F3DA4-4A41-4F24-8CB9-50D6F5CBC9EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF9F3DA4-4A41-4F24-8CB9-50D6F5CBC9EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C2F7D6E-A35C-4EF9-94D1-DA7C78C6BDD4}
+	EndGlobalSection
+EndGlobal

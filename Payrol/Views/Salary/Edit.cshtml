@@ -1,0 +1,87 @@
+﻿@model Payrol.Models.Salary
+
+<form method="post" asp-action="Edit">
+    <input asp-for="SalaryId" type="hidden" />
+    <input asp-for="SalaryStaffId" type="hidden" />
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div>
+            <h2 class="text-primary">
+                CREATE SALARY
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <strong>BASIC</strong>
+                    </div>
+                    <div>:</div>
+                    <div class="col-4">
+                        <input asp-for="SalaryBasic" class="form-control" />
+                        <span asp-validation-for="SalaryBasic" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <strong>PERFORMANCE ALLOWANCE</strong>
+                    </div>
+                    <div>:</div>
+                    <div class="col-4">
+                        <input asp-for="SalaryTransportAllowance" class="form-control" />
+                        <span asp-validation-for="SalaryTransportAllowance" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <strong>PERFORMANCE ALLOWANCE</strong>
+                    </div>
+                    <div>:</div>
+                    <div class="col-4">
+                        <input asp-for="SalaryPerformanceAllowance" class="form-control" />
+                        <span asp-validation-for="SalaryPerformanceAllowance" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <strong>OVERTIME</strong>
+                    </div>
+                    <div>:</div>
+                    <div class="col-4">
+                        <input asp-for="SalaryOvertime" class="form-control" />
+                        <span asp-validation-for="SalaryOvertime" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <strong>KWSP</strong>
+                    </div>
+                    <div>:</div>
+                    <div class="col-4">
+                        <input asp-for="SalaryKwsp" class="form-control" />
+                        <span asp-validation-for="SalaryKwsp" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <button type="submit" class="btn btn-success" value="Update">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        &nbsp;
+                        <a asp-action="Index" class="btn btn-primary">
+                            <i class="fas fa-step-backward"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+    @section Scripts
+    {
+        @{
+            <partial name="_ValidationScriptsPartial" />
+        }
+    }
+

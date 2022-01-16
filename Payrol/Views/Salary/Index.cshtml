@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Payrol.Models.Salary>
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="text-primary">SALARY</h1>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Salary" asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus-square"></i>&nbsp; Create Salary
+            </a>
+        </div>
+    </div>
+    <br /><br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Staff Name
+                    </th>
+                    <th>
+                        Staff Age
+                    </th>
+                    <th>
+                        Department
+                    </th>
+                    <th>
+                        View Details
+                    </th>
+                </tr>
+
+
+            </thead>
+            <tbody>
+                @foreach (var DataSalary in Model)
+                {
+                <tr>
+                    <td>
+                        @DataSalary.Staff.StaffName
+                    </td>
+                    <td>
+                        @DataSalary.Staff.StaffAge
+                    </td>
+                    <td>
+                        @DataSalary.Staff.Department.DepartmentName
+                    </td>
+                    <td class="center">
+                        @Html.ActionLink("Details", "ViewSalary", new { SalaryStaffId = DataSalary.SalaryStaffId, SalaryId = DataSalary.SalaryId})
+
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+
+    }
+
+    else
+    {
+        <p>
+            Not Exist
+        </p>
+
+    }
+
+
+</div>
+

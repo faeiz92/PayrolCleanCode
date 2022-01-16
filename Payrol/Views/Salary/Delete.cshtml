@@ -1,0 +1,83 @@
+﻿@model Payrol.Models.Salary
+
+<form method="post" asp-action="DeletePost">
+    <input asp-for="SalaryId" type="hidden"/>
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div>
+            <h2 class="text-primary">
+                DELETE STAFF
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="SalaryBasic"></label>
+                    </div>
+                    <div class="col-4">
+                        <input asp-for="SalaryBasic" disabled class="form-control" />
+                        <span asp-validation-for="SalaryBasic" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="SalaryTransportAllowance"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="SalaryTransportAllowance" disabled class="form-control" />
+                        <span asp-validation-for="SalaryTransportAllowance" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="SalaryPerformanceAllowance"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="SalaryPerformanceAllowance" disabled class="form-control" />
+                        <span asp-validation-for="SalaryPerformanceAllowance" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="SalaryOvertime"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="SalaryOvertime" disabled class="form-control" />
+                        <span asp-validation-for="SalaryOvertime" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="SalaryKwsp"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="SalaryKwsp" disabled class="form-control" />
+                        <span asp-validation-for="SalaryKwsp" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                            <a asp-controller="Salary" asp-route-Id="@Model.SalaryId" asp-action="DeletePost" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                            &nbsp;
+                            <a asp-action="Index" class="btn btn-success">
+                                <i class="fas fa-step-backward"></i>
+                            </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</form>
+
+    @section Scripts
+    {
+        @{
+            <partial name="_ValidationScriptsPartial" />
+        }
+    }
+

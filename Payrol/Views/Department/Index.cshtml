@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Payrol.Models.Department> //for call display data from table department
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="text-primary">DEPARTMENT</h1>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Department" asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus-square"></i>&nbsp; Create New Department
+            </a>
+        </div>
+    </div>
+    <br /><br />
+
+    @if(Model.Count() > 0)
+    {
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Department
+                </th>
+                <th>
+                    Location
+                </th>
+                <th>
+                    Edit or Delete
+                </th>
+            </tr>
+
+
+        </thead>
+        <tbody>
+            @foreach(var DataDepartment in Model)
+            {
+            <tr>
+                <td>
+                    @DataDepartment.DepartmentName
+                </td>
+
+                <td>
+                    @DataDepartment.DepartmentLocation
+                </td>
+                <td class="center">
+                    <a asp-controller="Department" asp-route-Id="@DataDepartment.DepartmentId" asp-action="Edit" class="btn btn-primary">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a asp-controller="Department" asp-route-Id="@DataDepartment.DepartmentId" asp-action="Delete" class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            }
+
+            </tbody>
+     </table>
+
+    }
+
+    else
+    {
+        <p>
+            Not Exist
+        </p>
+
+    }
+
+
+</div>
+
